@@ -67,7 +67,8 @@
     this.name = name;
     this.age = age;
 
-    /*//1. 创建了一个空的对象
+    /*
+    //1. 创建了一个空的对象
     var p = {};
     //2. 将实例对象的proto属性等于构造函数的prototype属性
     p.__proto__ = Person.prototype;
@@ -75,7 +76,9 @@
     var result = Person.call(p, 'Bob', 18)
     // console.log(result);
     //4. 指定返回值
-    return typeof result === 'object' ? result : p;*/
+    return typeof result === 'object' ? result : p;
+    */
+
     // return 123
   }
   Person.prototype.setName = function (name) {
@@ -88,14 +91,6 @@
   // p.setName('Jack')
   // console.log(p);
 
-  //1. 创建了一个空的对象
-  var p = {};
-  //2. 将实例对象的proto属性等于构造函数的prototype属性
-  p.__proto__ = Person.prototype;
-  //3. 构造函数调用call方法
-  var result = Person.call(p, 'Bob', 18)
-  console.log(result);
-  // return p
 
 </script>
 </body>
