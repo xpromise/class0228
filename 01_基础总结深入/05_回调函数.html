@@ -14,23 +14,39 @@
   * 那么，就需一个具有特定原型的函数指针进行回调，通知A程序事件已经发生。
   * 实际上，API使用一个回调函数来通知计时器。
 2. 常见的回调函数?
-  * DOM事件函数
   * 定时器函数
+  * DOM事件函数
   * ajax回调函数(后面学)
   * 生命周期回调函数(后面学)
 -->
 <script type="text/javascript">
   /*
-    什么是回调函数？
+    回调函数是什么？
       - 异步加载的通知机制
    */
-  setTimeout(function () {
-    alert('影院通知落下东西回来取~~~')
-  }, 6000)
 
-  alert('主程序加载完成，观影完毕，离开影院回家')
+  console.log('123123');
+
+  setTimeout(function () { //延时定时器
+    console.log('2miao');
+  }, 2000)
+
+  setInterval(function () { //循环定时器
+
+  }, 1000)
+
+  /*
+    特点：
+      1. 你定义的函数
+      2. 你并没有直接调用
+      3. 最终它执行了
+   */
+  console.log('789789');
+
+  document.onclick = function () {
+
+  }
 
 </script>
-
 </body>
 </html>

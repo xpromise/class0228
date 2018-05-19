@@ -14,27 +14,7 @@
   * 不污染外部命名空间
 -->
 <script type="text/javascript">
-  /*
-    1. 各种函数的公式化总结
-      1.1 普通函数 = function关键字 方法名(形参列表) {逻辑代码  return返回值}
-      1.2 回调函数 异步加载的通知机制
-      1.3 IIFE函数 = (无方法名的普通函数)()
-    2. 增加内存泄露的堆栈模型图讲解
-    3. jQuery源码解读
-  */
-  var a = 2;
 
-  (function () {
-    var a = 1;  //局部变量
-    alert('函数执行了~~' + a)
-  })()
-
-  console.log(a);
-
-  /*function test () {
-
-  }
-  test()*/
 </script>
 
 </body>
