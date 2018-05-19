@@ -9805,11 +9805,12 @@ if ( typeof module === "object" && module && typeof module.exports === "object" 
 }
 
 })( window );
+
 /*
+	(function (w) {
+		jQuery = function () {}
 
-(function (window) {
-
-	window.jQuery = window.$ = jQuery;
-})(window)
+		w.jQuery = w.$ = jQuery;
+	})(window)
 
  */

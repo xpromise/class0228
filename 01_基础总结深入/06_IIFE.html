@@ -14,6 +14,17 @@
   * 不污染外部命名空间
 -->
 <script type="text/javascript">
+  var a = 456;
+  (function (window) {
+    //需要一个函数只执行一次
+    var a = 123;
+    console.log('匿名函数调用了');
+  })(window)
+  
+  function test() {
+    
+  }
+  test()
 
 </script>
 
