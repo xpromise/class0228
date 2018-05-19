@@ -25,8 +25,25 @@
   * .属性名: 编码简单, 但有时不能用
   * ['属性名']: 编码麻烦, 但通用
 -->
-<script type="text/javascript">
 
+<script type="text/javascript">
+  /*
+    1. 对象是什么？
+      - 实体的抽象表达
+      
+   */
+  
+  var obj = {
+    name: '吴杰'
+  }
+  var obj1 = {
+    'name': '吴杰'
+  }
+  console.log(obj.name);
+  console.log(obj['name']);
+  var name = 'name';
+  console.log(obj[name]);
+  
 </script>
 </body>
 </html>
