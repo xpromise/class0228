@@ -18,18 +18,30 @@
         },
         valueOf: function () {
           console.log('valueOf()');
-          // return 1
+          return {}
         }
       }
+      // 2、对象转换时，优先调用toString()
+      // var obj = {};
+      // console.log(obj[a]);
 
-      console.log(a);
-      if (a == 1 && a == 2 && a == 3) {
-        console.log('里面语句被执行了');
-      }
+      //3、强转字符串的情况下，优先调用toString()方法；强转数字的情况下优先调用valueOf()
+      // console.log(String(a));
+      // console.log(Number(a));
+
+      // 4、在有运算操作符的情况下valueOf()的优先级高于toString()，
+      //   这里需要注意的是当调用valueOf()方法无法运算后还是会再调用toString()方法
+      console.log(a++);
+
+      // if (a == 1 && a == 2 && a == 3) {
+      //   console.log('里面语句被执行了');
+      // }
       /*
-        隐式类型转换：（对象obj）
-          1. obj.toString()
-          2. obj.valueOf()
+        1、valueOf()偏向于运算，toString()偏向于显示
+        2、对象转换时，优先调用toString()
+        3、强转字符串的情况下，优先调用toString()方法；强转数字的情况下优先调用valueOf()
+        4、在有运算操作符的情况下valueOf()的优先级高于toString()，
+        这里需要注意的是当调用valueOf()方法无法运算后还是会再调用toString()方法
        */
 
   </script>
