@@ -15,38 +15,34 @@
   * 作用: 函数的所有实例对象自动拥有原型中的属性(方法)
 -->
 <script type="text/javascript">
-  /*function Object() {
+/*
+  什么是原型？
+    - prototype和__proto__
+  原型在哪里？
+    prototype: 所有函数都有prototype属性,指向一个对象，这个对象称为原型对象
+      constructor： 函数对象
+      __proto__: Object.prototype
+    __proto__: 和对象找属性息息相关
+  为什么使用原型？
+    为了实现类的继承
 
+ */
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.toString = function () {
+      console.log('函数内部ToString()');
+    }
   }
-
-  // var o1 = new Object()
-  Object.prototype.say886 = function (word) {
-    // console.log(word);
+  Person.prototype.toString = function () {
+    console.log('toString()');
   }
-  console.log(Object.prototype);*/
-
-  // 每个函数都有一个prototype(显示原型)属性, 它默认是一个对象(即称为: 原型对象)
-  function Person() {
-
-  }
-  // console.log(Person.prototype, Object.prototype);
-  // Person.prototype.say = function (word) {
-  //   console.log(word);
-  // }
-  // Person.say()  报错
-  var p = new Person(); //创建实例对象
-  console.log(p);
-  // p.say('atguigu'); //构造函数显示原型上的方法最终是给实例对象使用
-  // console.log(p.toString());
-
-  console.log(Person.prototype);
-  console.log(Object.prototype);
+  console.log(Person.prototype, Object.prototype);
   console.log(Person.prototype.__proto__ === Object.prototype); //true
-    /*每个函数都有一个prototype(显示原型)属性, 它默认是一个对象(即称为: 原型对象)
-      原型对象
-        * constructor, 它指向函数对象
-        * __proto__，隐式原型属性 , 它的值为Object.prototype
-    * __proto__ : 对象上变量查找规则*/
+  var p = new Person('Bob', 18);
+  console.log(p);
+  console.log(p.toString());
+
 
 
 </script>

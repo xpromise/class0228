@@ -17,33 +17,7 @@
 3. 构造函数/原型/实体对象的关系2(图解)
 -->
 <script type="text/javascript">
-  /*function Fn() {
-    this.toString = function () {
-      return '构造函数内的方法'
-    }
-  }
-  Fn.prototype.toString = function () {
-    return '原型对象上的方法'
-  }
-  var fn = new Fn();
-  console.log(fn);
-  console.log(fn.toString());*/
 
-
-  function Fn() {
-    this.test1 = function () {
-      console.log('test1()')
-    }
-  }
-  Fn.prototype.test2 = function () {
-    console.log('test2()')
-  }
-  var fn = new Fn()
-
-  fn.test1()
-  fn.test2()
-  console.log(fn.toString())
-  fn.test3()
 </script>
 </body>
 </html>
