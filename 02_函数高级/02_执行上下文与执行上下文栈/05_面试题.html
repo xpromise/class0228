@@ -9,26 +9,31 @@
   /*
    测试题1: 函数名和变量名相同时，变量名将被忽略
    */
-  function a() {}
-  var a;
-  console.log(typeof a)
+  //var a;
+  var a = 123;
+  function a() {
+
+  }
+  console.log(typeof a)  //number
   /*
      测试题2: 变量预处理, in操作符
      */
   if (!(b in window)) {
     var b = 1;
   }
-  // console.log(b)
+  console.log(b)  //undefined
 
   /*
      测试题3: 预处理, 顺序执行
      */
+
   var c = 1
   function c(c) {
     console.log(c)
     var c = 3
   }
-  // c(2)
+  c(2)
+
 </script>
 </body>
 </html>
