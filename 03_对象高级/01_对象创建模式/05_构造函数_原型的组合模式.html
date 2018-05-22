@@ -11,6 +11,22 @@
   * 适用场景: 需要创建多个类型确定的对象
 -->
 <script type="text/javascript">
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  Person.prototype.setName = function (name) {
+    this.name = name;
+  }
+
+  function Child(name, age, sex) {
+    this.name = name;
+    this.age = age;
+    this.sex = sex;
+  }
+
+  var p1 = new Person('Bob', 18);
+  var p2 = new Person('Tom', 20);
 
 </script>
 </body>

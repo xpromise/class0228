@@ -15,7 +15,18 @@
   /*
   一个人: name:"Tom", age: 12
    */
+  var person = new Object();
+  person.name = 'Bob';
+  person.age = 18;
+  person.setName = function (name) {
+    this.name = name;
+  }
 
+  person.name = 'Bob';
+  person.age = 18;
+  person.setName = function (name) {
+    this.name = name;
+  }
 </script>
 </body>
 </html>
