@@ -8,9 +8,51 @@
   <script type="text/javascript">
     /*
       实现一个函数:
-        mul(2)      返回 2
-        mul(2)(3)   返回 6
+        mul(2)         返回 2
+        mul(2)(3)      返回 6
+        mul(2)(3)(4)   返回 24
      */
+    /*function mul(n) {
+      var fn = function (m) {
+        return m * n;
+      }
+      fn.toString = function () {
+        return n;
+      }
+      return fn;
+    }*/
+
+    /*function mul(n) {
+      var fn = function (m) {
+        var foo = function (k) {
+          return m * n * k;
+        }
+        foo.toString = function () {
+          return m * n;
+        }
+        return foo;
+      }
+      fn.toString = function () {
+        return n;
+      }
+      return fn;
+    }*/
+
+    function mul(n) {
+      var fn = function (m) {
+        return mul(m * n);
+      }
+      fn.toString = function () {
+        return n;
+      }
+      return fn;
+    }
+
+    console.log(mul(2));
+    console.log(mul(2)(3));
+    console.log(mul(2)(3)(4));
+    console.log(mul(2)(3)(4)(5));
+
 
 
 
