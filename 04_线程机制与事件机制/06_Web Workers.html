@@ -27,8 +27,35 @@
     在主线程计算: 当位数较大时, 会阻塞主线程, 导致界面卡死
     在分线程计算: 不会阻塞主线程
    */
+  var btn1 = document.getElementById('btn1');
+  var btn2 = document.getElementById('btn2');
+  var number = document.getElementById('number');
+  // num值查斐波那契数列第几个数
+  function fibonacci(num) {
+    return num <= 2 ? 1 : fibonacci(num - 1) + fibonacci(num - 2);
+  }
+
+  btn1.onclick = function () {
+    var val = number.value;
+    console.log(fibonacci(val));
+  }
+
+  btn2.onclick = function () {
+    var val = number.value;
+    //创建了分线程的实例对象
+    var worker = new Worker('./worker.js');
+    //主线程通知分线程
+    worker.postMessage(val);
+    //主线程接受分线程的内容
+    worker.onmessage = function (ev) {
+      console.log(ev);
+      //主线程获取分线程提交的数据
+      var data = ev.data;
+      //打出数据
+      console.log(data);
+    }
+  }
 
 </script>
 </body>
-
 </html>

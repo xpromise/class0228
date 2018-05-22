@@ -18,7 +18,18 @@
   * 事件循环模型(后面讲)
 -->
 <script type="text/javascript">
-  
+  var btn = document.getElementById('btn');
+  btn.onclick = function () {
+    var startTime = Date.now(); //当前时间 格林时间
+    setInterval(function () {
+      var endTime = Date.now();
+      console.log(endTime - startTime);
+      startTime = endTime;
+      for (var i = 0; i < 1000000000; i++) {
+
+      }
+    }, 100)
+  }
 </script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <button id="btn">点击按钮发送请求</button>
+  <script type="text/javascript">
+      /*
+        实现函数节流throttle
+       */
+      var btn = document.getElementById('btn');
+      btn.onclick = function () {
+        fn();
+      };
+      function fn() {
+        console.log('fn()');
+      }
+
+
+
+  </script>
+</body>
+</html>
