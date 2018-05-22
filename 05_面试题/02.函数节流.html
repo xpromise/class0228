@@ -11,12 +11,47 @@
         实现函数节流throttle
        */
       var btn = document.getElementById('btn');
-      btn.onclick = function () {
-        fn();
-      };
+      // btn.onclick = function () {
+      //   fn();
+      // };
       function fn() {
         console.log('fn()');
       }
+
+      /*btn.onclick=function () {
+        var that = this;
+        that.disabled = true;
+        fn();
+        setTimeout(function () {
+          that.disabled = false;
+        },2000);
+      };*/
+
+
+      btn.onclick = function () {
+        this.startTime = throttle(this.startTime, fn)
+      }
+      btn.startTime = 0;
+
+      function throttle(startTime, fn) {
+        var nowTime = Date.now();
+        if (nowTime - startTime >= 2000) {
+          fn();
+          return nowTime
+        }
+        return startTime
+      }
+
+      /*var throttle = {
+        startTime: 0,
+          func: function (fn) {
+          var nowTime = Date.now();
+          if (nowTime - this.startTime >= 2000) {
+            fn();
+            this.startTime = nowTime;
+          }
+        }
+      }*/
 
 
   </script>
