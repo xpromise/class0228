@@ -19,30 +19,6 @@
     1. 子类型的原型为父类型的一个实例对象
 -->
 <script type="text/javascript">
-  function Parent() {
-    this.pProp = 'The Parent'
-  }
-  Parent.prototype.showPProp = function () {
-    console.log('showPProp()', this.pProp, this)
-  }
-  function Child() {
-    this.cProp = 'The Child'
-  }
-
-  // Child.prototype = Parent.prototype  //不行，this变为Child实例对象了。实例对象原型链上没有pProp属性
-  Child.prototype = new Parent()
-  Child.prototype.constructor = Child
-  Child.prototype.showCProp = function () {
-    console.log('showCProp()', this.cProp, this)
-  }
-
-  var c = new Child()
-  
-  c.showPProp()
-  c.showCProp()
-  console.log(c.constructor)
-  console.log(c, c.cProp)
-
 
 </script>
 </body>

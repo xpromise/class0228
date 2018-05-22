@@ -6,23 +6,37 @@
 </head>
 <body>
 <script type="text/javascript">
-  function Foo() {
+  /*function Foo() {
     getName = function () { alert (1); };
     return this;
   }
   Foo.getName = function () { alert (2);};
   Foo.prototype.getName = function () { alert (3);};
   var getName = function () { alert (4);};
-  function getName() { alert (5);}
+  function getName() { alert (5);}*/
+
+  // function getName() { alert (5);}
+  var getName = undefined
+
+  function Foo() {
+    // getName = function () { alert (1); };
+    return this;
+  }
+  Foo.getName = function () { alert (2);};
+  Foo.prototype.getName = function () { alert (3);};
+  // getName = function () { alert (4);};
+  getName = function () { alert (1); };
 
   //请写出以下输出结果：
-  Foo.getName();
-  getName();
-  Foo().getName();
-  getName();
-  new Foo.getName();
-  new Foo().getName();
-  new new Foo().getName();
+  Foo.getName();  // 2
+  getName();  // 4
+  Foo().getName();  // 1
+  getName();  // 1
+  new Foo.getName();  // 2
+  new Foo().getName(); // 3
+  // f.getName()
+  new new Foo().getName(); // 3
+  // new f.getName()
 </script>
 </body>
 </html>
