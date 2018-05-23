@@ -15,6 +15,10 @@
         exports是module.exports的简写方式
         通常如果向外暴露简单的变量， 通常使用exports
         当我们向外暴露构造函数，通常使用module.exports
+
+        node中能解析哪些文件：
+          .js  .json  .node
+          如果后缀名不是以上三种，会.js文件解析
  */
 var math = require('math');
 var Person = require('./module01');
