@@ -1,0 +1,10 @@
+{
+  "name": "my_test",
+  "version": "0.0.1",
+  "dependencies": {
+    "math": "0.0.3"
+  },
+  "devDependencies": {
+    "react": "^15.6.2"
+  }
+}
