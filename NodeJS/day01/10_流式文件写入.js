@@ -14,10 +14,10 @@ var fs = require('fs');
 
 var ws = fs.createWriteStream('4.txt');
 
-ws.on('open', function () {
+ws.once('open', function () {
   console.log('文件打开了');
 })
-ws.on('close', function () {
+ws.once('close', function () {
   console.log('文件关闭了');
 })
 
