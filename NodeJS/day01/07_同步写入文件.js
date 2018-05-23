@@ -30,5 +30,5 @@ var fd = fs.openSync('1.txt', 'w', 0444);
 var data = fs.writeSync(fd, '呵呵呵呵哒');
 console.log(data);
 
-fs.closeSync(fd)
+fs.closeSync(fd);
 
