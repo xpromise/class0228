@@ -16,3 +16,8 @@ function doAnything() {
  */
 exports.doNothing = doNothing;
 exports.doAnything = doAnything;
+
+// exports = {
+//   doNothing: doNothing,
+//   doAnything: doAnything
+// }
