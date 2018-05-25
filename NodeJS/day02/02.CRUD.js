@@ -48,13 +48,10 @@ db.students.find({
 		db.collection.updateOne(查询条件，文档对象， 配置选项)
 		db.collection.updateMany(查询条件，文档对象， 配置选项)
 */
-
 db.students.update({age: 19}, {$set: {age: 20}}, {multi: true})
 
 /*
 	delete:
 		- db.collection.remove(查询条件)
-
 */
-
 db.students.remove({age: {$gt: 25}})
