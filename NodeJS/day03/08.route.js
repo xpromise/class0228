@@ -43,9 +43,9 @@ app.get('/test', function (req, res) {
     res.set()  设置响应头信息
     res.download()  客户端自动下载指定的资源
     res.sendFile()  客户端直接接受文件显示  需要是绝对路径
-    res.redirect()
-    res.send()
-    res.status()
+    res.redirect()  重定向
+    res.send()      返回响应
+    res.status()    设置响应状态码
    */
   // res.set('Content-Type', 'text/html;charset=utf8');
   // console.log(res.get('Content-Type'));
