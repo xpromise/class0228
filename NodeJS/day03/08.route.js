@@ -73,7 +73,7 @@ app.get('/goods/:id', function (req, res) {
 //   /user/123456
 app.get(/^\/user\/(\d+)$/, function (req, res) {
   console.log(req.params);
-  res.send('正则服务器返回响应')
+  res.send('正则服务器返回响应');
 })
 //监听端口号
 app.listen(3000, function () {
