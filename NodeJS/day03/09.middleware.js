@@ -22,7 +22,11 @@ app.use(function (req, res, next) {
 });
 
 function middleWare(req, res, next) {
-  res.redirect()
+  if (req.quert.username) {
+    next();
+  } else {
+    res.redirect('/login');
+  }
 }
 
 app.get('/login', middleWare, function (req, res, next) {
