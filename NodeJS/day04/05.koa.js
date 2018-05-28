@@ -12,6 +12,7 @@ app
 // app.use(_.get('/test/:id', function (ctx, next) {
 //   ctx.body = '根路由返回的响应'
 // }))
+
 //中间件
 // app.use(function (ctx, next) {
 //   var req1 = this.request;
