@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>regist</title>
+  <style>
+    .errMsg{
+      color: red;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!--
+    < %= % >   输入转义的数据到页面上   一个会将html标签转化为字符串
+    < %- % >   输入非转义的数据到页面上  一个不会转化
+    < % % >
+  -->
+  <h1>用户注册页面</h1>
+  <p><%= errMsg.err %></p>
+  <form action="/regist" method="post">
+    用户名: <input type="text" name="username" value="<%= errMsg.username %>">
+    <%= errMsg.usernameErr %> <%- errMsg.usernameErr %> <br><br>
+    密码: <input type="password" name="password">
+    <span class="errMsg"><%= errMsg.passwordErr %></span><br><br>
+    确认密码: <input type="password" name="rePassword">
+    <span class="errMsg"><%= errMsg.rePasswordErr %></span><br><br>
+    邮箱: <input type="text" name="email" value="<%= errMsg.email %>">
+    <span class="errMsg"><%= errMsg.emailErr %></span> <br><br>
+    <input type="submit" value="注册">
+
+    <% for (var i = 0; i < 10; i++) { %>
+      <p>显示10次</p>
+    <% } %>
+
+    <% if (true) { %>
+      <p>会被看到</p>
+    <% } %>
+
+    <% if (false) { %>
+      <p>不会被看到</p>
+    <% } %>
+
+  </form>
+</body>
+</html>

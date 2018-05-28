@@ -7,6 +7,10 @@ var userRouter = require('./router/userRouter');
 var userFaceRouter = require('./router/userFaceRouter');
 //创建app应用对象
 var app = express();
+//配置资源目录
+app.set('views', './views');
+//配置模板引擎
+app.set('view engine', 'ejs');
 //配置静态资源
 app.use(express.static('public'));
 //应用路由器
