@@ -20,9 +20,10 @@ userRouter.post('/login', function (req, res) {
   var password = req.body.password;
   Users.findOne({username: username}, function (err, data) {
     if (!err && data && data.password === sha1(password)) {
-      res.send('登录成功~~~');
+      res.redirect('/userCenter');
     } else {
-      res.send('用户名或密码错误');
+      var errMsg = '用户名或密码错误';
+      res.render('login', {errMsg: errMsg});
     }
   })
 })
@@ -40,7 +41,7 @@ userRouter.post('/regist', function (req, res) {
     4. 插入数据
    */
   //正则验证
-  var usernameReg = /[a-zA-Z0-9_]{5,12}/  //用户名可以包含大小写英文字符，数字，下划线，长度为5-12位
+  var usernameReg = /^[a-zA-Z0-9_]{5,12}$/  //用户名可以包含大小写英文字符，数字，下划线，长度为5-12位
   var passwordReg = /^[a-zA-Z0-9_]{6,18}$/ //密码可以包含大小写英文字符，数字，下划线，长度为6-18位
   var emailReg = /^[a-z0-9_-]{3,8}@[a-z]{3,6}\.com$/i //邮箱必须符合规范
 
@@ -85,7 +86,7 @@ userRouter.post('/regist', function (req, res) {
        */
       if (data) {
         // 查到了指定用户名
-        errMsg.usernameErr = '<h1>' + data.username + '用户名已被注册~~' + '</h1>';
+        errMsg.usernameErr = data.username + '用户名已被注册~~';
         errMsg.username = username;
         errMsg.email = email;
         res.render('regist', {errMsg: errMsg});
@@ -109,9 +110,6 @@ userRouter.post('/regist', function (req, res) {
       res.render('regist', {errMsg: errMsg});
     }
   })
-
-
-
 })
 
 module.exports = userRouter;

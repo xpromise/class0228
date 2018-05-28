@@ -8,12 +8,17 @@ var Router = express.Router;
 var userFaceRouter = new Router();
 
 userFaceRouter.get('/login', function (req, res) {
-  res.render('login');
+  res.render('login', {errMsg: ''});
 })
 
 userFaceRouter.get('/regist', function (req, res) {
   res.render('regist', {errMsg: {}});
 })
+
+userFaceRouter.get('/userCenter', function (req, res) {
+  res.render('userCenter');
+})
+
 
 
 module.exports = userFaceRouter;

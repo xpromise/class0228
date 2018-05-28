@@ -3,12 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>regist</title>
-  <style>
-    .errMsg{
-      color: red;
-      margin-left: 5px;
-    }
-  </style>
+  <link rel="stylesheet" href="css/common.css">
 </head>
 <body>
   <!--
@@ -29,17 +24,6 @@
     <span class="errMsg"><%= errMsg.emailErr %></span> <br><br>
     <input type="submit" value="注册">
 
-    <% for (var i = 0; i < 10; i++) { %>
-      <p>显示10次</p>
-    <% } %>
-
-    <% if (true) { %>
-      <p>会被看到</p>
-    <% } %>
-
-    <% if (false) { %>
-      <p>不会被看到</p>
-    <% } %>
 
   </form>
 </body>
