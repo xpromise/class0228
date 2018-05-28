@@ -1,21 +1,20 @@
-//连接数据库
-require('./database/db');
 //引入express模块
-var express= require('express');
+var express = require('express');
 //引入body-parser模块
 var bodyParser = require('body-parser');
 //引入sha1模块
 var sha1 = require('sha1');
 //引入Users模型对象
-var Users = require('./models/Users');
-//创建app应用对象
-var app = express();
-//配置静态资源
-app.use(express.static('public'));
-//解析请求体，将参数挂在到req.body
-app.use(bodyParser.urlencoded({extended: false}));
+var Users = require('../models/Users');
+//获取router路由器对象
+var Router = express.Router;
+//创建路由器
+var userRouter = new Router();
 
-app.post('/login', function (req, res) {
+//解析请求体，将参数挂在到req.body
+userRouter.use(bodyParser.urlencoded({extended: false}));
+
+userRouter.post('/login', function (req, res) {
   //获取用户提交的所有参数
   var username = req.body.username;
   var password = req.body.password;
@@ -28,7 +27,7 @@ app.post('/login', function (req, res) {
   })
 })
 
-app.post('/regist', function (req, res) {
+userRouter.post('/regist', function (req, res) {
   //获取用户提交的参数
   var username = req.body.username;
   var password = req.body.password;
@@ -79,7 +78,4 @@ app.post('/regist', function (req, res) {
 
 })
 
-//监听端口号
-app.listen(3000, function () {
-  console.log('服务器启动成功了~~~');
-})
+module.exports = userRouter;
