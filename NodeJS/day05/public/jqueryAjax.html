@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button id="btn">发送ajax请求</button>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+      $('#btn').click(function () {
+        /*
+        $.ajax(url路径, 配置对象)
+       */
+        /*$.ajax('/testAJAX', {
+          type: 'POST',
+          // method: 'POST',
+          data: 'username=sunwukong',
+          // headers: {
+          //   'Content-Type': 'text/html'
+          // },
+          success: function (data) {
+            console.log(data);
+          },
+          error: function (err) {
+            console.log(err);
+          }
+        })*/
+
+        $.get('/testAJAX', {username: 'sunwukong'} ,function (data) {
+          console.log(data);
+        })
+
+      })
+    })
+</script>
+</body>
+</html>
