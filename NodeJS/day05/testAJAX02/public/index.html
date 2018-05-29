@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>三级联动</title>
+</head>
+<body>
+
+<select id="province">
+	<option>请选择省份</option>
+</select> 省
+
+<select id="city">
+	<option>请选择市</option>
+</select> 市
+
+<select id="county">
+	<option>请选择区(县)</option>
+</select> 区(县)
+
+<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript">
+	$(function () {
+    var $province = $('#province');
+    var $city = $('#city');
+    var $county = $('#county')
+
+		//获取所有省份信息 并 显示
+		$.get('/getProvince', function (data) {
+			if (data.status === 'ok') {
+			  var list = data.list;
+			  console.log(list);
+				var html = '';
+        list.forEach(function (item) {
+          html += '<option value=' + item.province + '>' + item.name + '</option>';
+        })
+				$province.append(html);
+			}
+    })
+
+		//省发生改变时触发的事件
+    $province.change(function () {
+			// console.log(this.value);
+      // $county.html('<option>请选择区(县)</option>');
+      $county.children(':not(:first)').remove();
+			//获取省份的值
+			var province = this.value;
+			//发送请求获取指定省份所有城市的信息
+			$.get('/getCity?province=' + province, function (data) {
+        if (data.status === 'ok') {
+          var list = data.list;
+          var html = '<option>请选择市</option>';
+          list.forEach(function (item) {
+            html += '<option value=' + item.city + '>' + item.name + '</option>';
+          })
+          $city.html(html);
+        }
+      })
+    })
+
+    $city.change(function () {
+			var city = this.value;
+			var province = $province.val();
+			//拼接请求地址
+			var url = '/getCounty?province=' + province + '&city=' + city;
+			//发送请求，获取所有区县的数据
+			$.get(url, function (data) {
+        if (data.status === 'ok') {
+          var list = data.list;
+          var html = '<option>请选择区(县)</option>';
+          list.forEach(function (item) {
+            html += '<option value=' + item.county + '>' + item.name + '</option>';
+          })
+          $county.html(html);
+        }
+      })
+    })
+
+  })
+</script>
+</body>
+</html>
