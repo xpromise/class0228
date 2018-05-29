@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ajax</title>
+</head>
+<body>
+  <button id="btn">发送ajax请求</button>
+  <script type="text/javascript">
+      var btn = document.getElementById('btn');
+
+      btn.onclick = function () {
+        //发送ajax请求
+        //1. 创建xhr对象
+        var xhr = new XMLHttpRequest();
+        //2. 设置请求信息
+        /*
+          open(请求方式，url地址)
+
+          IE浏览器默认有缓存，缓存是比较特殊的，除第一次请求外，其他请求默认拦截不再发送，直接返回之前数据（请求地址和参数）
+          问题：不能及时得到远程更新的数据
+          解决：加一个请求参数为时间戳
+         */
+        xhr.open('GET', '/testAJAX?date=' + Date.now());
+        xhr.setRequestHeader('Content-Type', 'text/html');
+        //3. 发送请求
+        /*
+          send(body) 可以发送post请求的数据
+         */
+        xhr.send();
+        //4. 接受响应
+        /*
+        readyState值：
+          0：open()方法还未调用
+          1：send()还未调用，我可以去设置请求头信息，请求参数
+          2：send()已被调用，并返回了特定信息 响应状态码和响应头
+          3：接受了部分响应数据
+          4：接受了全部数据
+         */
+        //事件，监视readyState值的变化
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 2) {
+            console.log(xhr.status);
+          }
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            alert(xhr.responseText);
+          }
+        }
+
+      }
+  </script>
+</body>
+</html>
