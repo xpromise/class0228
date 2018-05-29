@@ -15,6 +15,23 @@ app.get('/testAJAX', function (req, res) {
   res.send('接受ajax请求返回响应');
 })
 
+app.get('/jsonp', function (req, res) {
+  var callback = req.query.callback;
+
+  var data = {
+    name: '吴杰',
+    age: 18
+  }
+  data = JSON.stringify(data);
+  //jsonp
+  //json with padding
+  var cb = callback + '(' + data + ')';
+
+  console.log(cb); // getData({"name":"吴杰","age":18})
+  res.send(cb);
+})
+
+
 app.listen(3000, function () {
   console.log('服务器启动成功了~~~');
 })

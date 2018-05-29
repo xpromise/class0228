@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button id="btn">点击发送ajax请求</button>
+
+<!--<script type="text/javascript" src="http://127.0.0.1:3000/jsonp"></script>-->
+
+<script type="text/javascript">
+    var btn = document.getElementById('btn');
+
+    btn.onclick = function () {
+      /*var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://127.0.0.1:3000/jsonp');
+      xhr.send();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText);
+        }
+      }*/
+      //创建script标签
+      var script = document.createElement('script');
+      //定义回调函数
+      window.getData = function (data) {
+        console.log(data);
+      }
+      //设置script的src属性
+      script.src = 'http://127.0.0.1:3000/jsonp?callback=getData';
+      //将script添加到body中生效
+      document.body.appendChild(script);
+
+    }
+
+</script>
+</body>
+</html>

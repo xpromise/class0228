@@ -26,7 +26,7 @@
     var $county = $('#county')
 
 		//获取所有省份信息 并 显示
-		$.get('/getProvince', function (data) {
+		$.get('http://localhost:3000/getProvince', function (data) {
 			if (data.status === 'ok') {
 			  var list = data.list;
 			  console.log(list);
