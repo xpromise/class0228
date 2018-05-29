@@ -31,6 +31,11 @@ app.get('/jsonp', function (req, res) {
   res.send(cb);
 })
 
+app.get('/cors', function (req, res) {
+  // res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Origin', 'http://localhost:63342');
+  res.send('cors的响应~~~');
+})
 
 app.listen(3000, function () {
   console.log('服务器启动成功了~~~');

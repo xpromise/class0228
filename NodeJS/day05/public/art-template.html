@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+  <script id="test" type="text/html">
+    {{if isAdmin}}
+      {{each students}}
+        <p>{{$value.name + ' ' + $value.age + ' ' + $index}}</p>
+      {{/each}}
+    {{/if}}
+  </script>
+  <script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+  <script type="text/javascript" src="./js/template-web.js"></script>
+  <script type="text/javascript">
+      $(function () {
+        var data = {
+          isAdmin: true,
+          students: [{name: '吴杰', age: 18}, {name: '吴俊杰', age: 20}, {name: '林俊杰', age: 37}]
+        }
+        //将模板编译成html字符串
+        var html = template('test', data);
+        console.log(html);
+        //将编译后的代码添加容器中，从而渲染html
+        $('body').append(html);
+      })
+  </script>
+</body>
+</html>
