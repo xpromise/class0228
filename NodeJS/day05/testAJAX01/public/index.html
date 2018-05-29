@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ajax</title>
+</head>
+<body>
+  <input type="text" placeholder="请输入验证码">
+  <button id="btn">发送验证码</button>
+  <script type="text/javascript">
+    window.onload = function () {
+      var btn = document.getElementById('btn');
+      var lastTime = 0; //初始化首次点击发送ajax请求的时间
+      var isXHR = null; //之前是否发送过AJAX请求
+      /*
+        问题一：无限点击按钮发送请求
+        解决：函数节流
+
+        问题二：按钮没有提示
+        解决：设置定时器
+
+        问题三：由于网络延迟，导致用户点击发送验证码，发送了多次，搞不清楚要填写哪个
+        解决：xhr.abort() 取消上一次ajax请求
+       */
+      btn.onclick = function () {
+        var nowTime = Date.now(); //当前点击发送ajax请求的时间
+        //一分钟只能点击一次
+        if (nowTime - lastTime >= 5000) {
+          var time = 5;
+          //修改按钮的样式
+          this.style.color = 'gray';
+          this.innerText = '已发送(' + time + 's)';
+          //设置循环定时器，实现倒计时的功能
+          var timer = setInterval(function () {
+            btn.innerText = '已发送(' +  --time + 's)';
+            if (time <= 0) {
+              //按钮的样式改为了
+              btn.style.color = 'black';
+              btn.innerText = '发送验证码';
+              clearInterval(timer);
+            }
+          }, 1000)
+
+          if (isXHR) {
+            //如果之前发送过AJAX请求，取消之前的请求，重新发送一次ajax请求
+            isXHR.abort();
+            isXHR = sendAJAX();
+          } else {
+            //如果之前没有发送过ajax请求，就发送ajax请求
+            isXHR = sendAJAX();
+          }
+
+          //同步时间，将上一次时间同步为此次时间
+          lastTime = nowTime;
+        }
+
+        function sendAJAX() {
+          //发送ajax请求
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', '/testAJAX');
+          xhr.send();
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              console.log(xhr.responseText);
+              //接受了所有数据，取消ajax请求没意义，所以置为null
+              isXHR = null;
+            }
+          }
+          return xhr;
+        }
+
+      }
+    }
+  </script>
+</body>
+</html>
