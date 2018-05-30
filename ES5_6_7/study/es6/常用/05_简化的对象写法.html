@@ -19,7 +19,23 @@
   };
 -->
 <script type="text/javascript">
-
+  let a = 123;
+  let b = 456;
+  /*let obj = {
+    a: a,
+    b: b,
+    setA: function (x) {
+      this.a = x;
+    }
+  }*/
+  let obj = {
+    a,   //省略同名的变量
+    b,
+    setA (x) {  //省略function关键字
+      this.a = x;
+    }
+  }
+  console.log(obj);
 </script>
 </body>
 </html>

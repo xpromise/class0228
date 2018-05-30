@@ -14,6 +14,33 @@
   * bind()是将函数返回
 -->
 <script type="text/javascript">
+  var obj = {};
+  function fn(name, age) {
+    console.log(this);
+    console.log(name, age);
+  }
+  fn() //window
+  fn.call(obj, '吴杰', 18)  //obj
+  fn.apply(obj, ['吴杰', 20])  //obj
+
+  /*var newFn = fn.bind(obj, '吴杰', 22);
+  newFn();*/
+  var newFn = fn.bind(obj);
+  newFn('吴杰', 22);
+
+  /*
+    call、apply、bind方法的区别：
+      call、apply区别和联系：
+        联系：都能改变this指向，并且立即执行函数
+        区别：传参的方式不同
+          call：第一个参数是改变this指向的对象，第二个参数开始是作为函数的实参，并且以逗号隔开
+          apply：第一个参数是改变this指向的对象，第二个参数是一个数组，数组中放置函数要传入的实参
+      call、apply 和 bind的区别和联系：
+        联系：都能改变this指向
+        区别：
+          1. call、apply会立即执行函数，bind会返回一个新函数，不会立即执行函数
+          2. bind传参方式和call是一样的
+   */
 
 </script>
 </body>

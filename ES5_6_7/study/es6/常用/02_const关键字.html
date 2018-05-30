@@ -15,7 +15,27 @@
   * 保存不用改变的数据
 -->
 <script type="text/javascript">
+  /*
+      * 在块作用域内有效
+      * 不能重复声明
+      * 不会预处理, 不存在提升
+   */
+  // console.log(A);
+  // if (true) {
+  //   const A = 1;
+  // }
+  // console.log(A);
 
+  // const B = 123;
+  // const B = 456;  //Identifier 'B' has already been declared
+
+  // const C = 123;
+  // C = 456;  // Assignment to constant variable.
+  /*
+    let和const
+      1. 所有声明的变量先用let定义，只有常量改为const
+      2. 所有声明的变量先用const定义，只有变量改为let  (通常选择第二种)
+   */
 </script>
 </body>
 </html>

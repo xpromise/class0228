@@ -16,6 +16,23 @@
   * 给多个形参赋值
 -->
 <script type="text/javascript">
+  let person = {
+    name: '吴杰',
+    age: 20
+  }
+  // let name = person.name;
+  // let age = person.age;
+
+  // console.log(name, age);  name is not defined
+  let {name, age} = person;  //解构赋值拆解等号右边的对象，将对象中指定属性的值赋值给等号左边的变量
+                          //如果找不到此属性，返回undefined
+  console.log(name);
+  console.log(age);
+
+  let arr = [1, 2, 3];
+  let [a, b, c, d] = arr;
+  console.log(a, b, c, d);
+
 
 </script>
 </body>

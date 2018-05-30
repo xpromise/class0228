@@ -25,7 +25,28 @@
   * 使用let取代var是趋势
 -->
 <script type="text/javascript">
+  /*console.log(username);  //undefined
+  var username = 'sunwukong';*/
+  // console.log(username);  //username is not defined
+  // let username = 'sunwukong';  //1. 声明的变量不会被提升
 
+  // console.log(username);
+  // if (false) {
+  //   let username = '123' //2. 具有块级作用域
+  // }
+  // console.log(username);
+
+  // let username = '123'; //3. 不允许重复声明同一个变量
+  // let username = '456' //Identifier 'username' has already been declared
+  // console.log(username);
+  var btns = document.getElementsByTagName('button');
+
+  for (let i = 0; i < btns.length; i++) {
+    debugger
+    btns[i].onclick = function () {
+      alert(i);
+    }
+  }
 
 </script>
 </body>

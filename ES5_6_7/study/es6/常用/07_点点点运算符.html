@@ -27,6 +27,25 @@
 -->
 <script type="text/javascript">
 
+  function fn(...args) {
+    // console.log(a, b, c);
+    // console.log(arguments);
+    // console.log(arguments.callee);
+    /*let args = []
+    for (var i = 0; i < arguments.length; i++) {
+      args.push(arguments[i]);
+    }*/
+    console.log(...args);
+    args.forEach(function (item) {
+      console.log(item);
+    })
+  }
+  fn(1, 2, 3, 4, 5);
+
+  let arr1 = [1, 2, 3];
+  let arr2 = [4, ...arr1, 5];
+  console.log(arr2);
+
 </script>
 
 </body>

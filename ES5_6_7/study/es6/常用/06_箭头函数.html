@@ -28,7 +28,91 @@
         如果没有，则this是window。
 -->
 <script type="text/javascript">
+  /*
+    创建函数的方式：
+      函数表达式
+      函数声明
+   */
+  /*function fn1() {  //函数声明
 
+  }
+  let fn2 = function () {  //函数表达式
+
+  }*/
+  let fn3 = () => {  //为了省略function
+
+  }
+  //没有传参，并且语句只有一条
+  let fn4 = () => console.log('hello');
+  fn4();
+  //有一个参数，并且语句只有一条
+  let fn5 = x => console.log(x);
+  fn5(123);
+  //两个参数和两个以上，并且语句只有一条
+  let fn6 = (x, y) => console.log(x, y);
+  fn6(123, 456);
+  //多条语句
+  let fn7 = (x, y) => {
+    let result = x + y;
+    console.log(result);
+  }
+  fn7(123, 456);
+
+  let fn8 = () => console.log(this);  //window
+  fn8();
+  /*
+    箭头函数的this看外层的是否有函数，
+        如果有，外层函数的this就是内部箭头函数的this，
+        如果没有，则this是window。
+   */
+  let obj = {};
+  function foo1() {
+    let fn9 = () => console.log(this);  //window
+    fn9();
+  }
+  foo1();
+
+  function foo2() {
+    let fn9 = () => console.log(this);  //obj
+    fn9();
+  }
+  foo2.call(obj);
+  /*
+    箭头函数是静态的，和它在哪定义有关，和它在哪调用没有关系
+   */
+  let fn10 = () => console.log(this); //window
+  function foo3() {
+    fn10();
+  }
+  foo3.call(obj);
+
+  let fn11 = () => {
+    console.log(this);  //window
+    let fn12 = function () {
+      console.log(this);  //obj
+      let fn13 = () => {
+        console.log(this);  //obj
+        let fn14 = () => {
+          console.log(this);  //obj
+        }
+        fn14();
+      }
+        fn13.call(window)
+    }
+    fn12.call(obj);
+  }
+  fn11()
+
+  let obj1 = {
+    sayName (name) {
+      let fn = () => {
+        console.log(this);  //obj1
+        console.log(name);
+      }
+      fn();
+    }
+  }
+  obj1.sayName('bob');
 </script>
 
 </body>
