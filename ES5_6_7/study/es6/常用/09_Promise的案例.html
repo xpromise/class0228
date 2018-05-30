@@ -13,7 +13,6 @@
     const content = document.getElementById('content');
     const list = document.getElementById('list');
 
-
     function getNews(url) {
       const promise = new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
@@ -49,7 +48,7 @@
       }, (error) => {
         console.log(error);
       })
-    //链式调用
+      //链式调用
       .then((result) => {
         //显示评论信息
         let html = '';
@@ -60,6 +59,7 @@
       }, (error) => {
         console.log(error);
       })
+
   </script>
 </body>
 </html>
