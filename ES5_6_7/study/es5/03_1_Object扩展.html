@@ -21,6 +21,54 @@ ES5给Object扩展了一些静态方法, 常用的2个:
    * 存取器属性：setter,getter一个用来存值，一个用来取值
 -->
 <script type="text/javascript">
+  // Object.create(prototype, [descriptors])
+  /*var person = {
+    name: '吴杰',
+    age: 20,
+    say: function (word) {
+      console.log(word);
+    }
+  }
+  var p = Object.create(person, {
+    sex: {
+      value: '男',     //数据描述符
+      writable: true,   //属性是否可写
+      // configurable: true,  //属性是否可以通过delete删除
+      enumerable: true  //属性是否可以被for in循环遍历
+    }
+  }); //p.__proto__ = person
+  p.sex = '女';
+  delete p.sex;2
+  for (var key in p) {
+    if (p.hasOwnProperty(key)) {
+      console.log(key);
+    }
+  }
+  console.log(p);*/
+
+  // Object.defineProperties(object, descriptors)
+  var person = {
+    firstName: 'Tom',
+    lastName: 'Jerry'
+  }
+  Object.defineProperties(person, {
+    fullName: {
+      writable: true,
+      get: function () {   //访问描述符
+        return this.firstName + ' ' + this.lastName;
+      },
+      set: function (name) {
+        var arr = name.split(' ');
+        this.firstName = arr[0];
+        this.lastName = arr[1];
+      }
+    }
+  })
+  console.log(person);
+  console.log(person.fullName);
+  person.fullName = 'jack rose';
+  console.log(person);
+  console.log(person.fullName);
 
 </script>
 </body>

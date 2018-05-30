@@ -11,7 +11,24 @@
     * set propertyName(){} 用来监视当前属性值变化的回调函数
 -->
 <script type='text/javascript'>
+  var person = {
+    firstName: 'Tom',
+    lastName: 'Jerry',
+    get fullName() {
+      return this.firstName + ' ' + this.lastName;
+    },
+    set fullName(name) {
+      var arr = name.split(' ');
+      this.firstName = arr[0];
+      this.lastName = arr[1];
+    }
+  }
 
+  console.log(person);
+  console.log(person.fullName);
+  person.fullName = 'Jack Rose';
+  console.log(person);
+  console.log(person.fullName);
 
 </script>
 </body>
