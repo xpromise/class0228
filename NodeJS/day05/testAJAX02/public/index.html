@@ -61,6 +61,7 @@
     $city.change(function () {
 			var city = this.value;
 			var province = $province.val();
+      $county.children(':not(:first)').remove();
 			//拼接请求地址
 			var url = '/getCounty?province=' + province + '&city=' + city;
 			//发送请求，获取所有区县的数据
