@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <h1 id="title"></h1>
+  <p id="content"></p>
+  <ul id="list"></ul>
+  <script type="text/javascript">
+    const title = document.getElementById('title');
+    const content = document.getElementById('content');
+    const list = document.getElementById('list');
+
+
+    function getNews(url) {
+      const promise = new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              //请求成功并返回数据
+              let data = xhr.responseText;
+              data = JSON.parse(data);
+              console.log(data);
+              resolve(data);
+            } else {
+              //请求失败
+              reject('error');
+            }
+          }
+        }
+      })
+      return promise;
+    }
+
+    getNews('http://localhost:3000/news?id=1')
+      .then((result) => {
+        console.log(result);
+        //获取到数据，显示新闻内容
+        title.innerText = result.title;
+        content.innerText = result.content;
+        //发送请求，请求评论内容
+        const url = `http://localhost:3000${result.commentsUrl}`;
+        return getNews(url);
+      }, (error) => {
+        console.log(error);
+      })
+    //链式调用
+      .then((result) => {
+        //显示评论信息
+        let html = '';
+        result.forEach(item => html += '<li>' + item.content + '</li>');
+        setTimeout(function () {
+          list.innerHTML = html;
+        }, 2000)
+      }, (error) => {
+        console.log(error);
+      })
+  </script>
+</body>
+</html>
