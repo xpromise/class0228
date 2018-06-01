@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>async</title>
+</head>
+<body>
+  <h1 id="title"></h1>
+  <p id="content"></p>
+  <ul id="list"></ul>
+  <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+  <script type="text/javascript">
+      $(function () {
+        let $title = $('#title');
+        let $content = $('#content');
+        let $list = $('#list');
+
+        //创建发送请求的函数
+        function getNews(url) {
+          return new Promise(resolve => $.get(url, data => resolve(data)))
+        }
+        //创建显示数据函数
+        async function showData() {
+          //发送请求，请求新闻数据
+          let result = await getNews('http://localhost:3000/news?id=1');
+          //显示信息
+          $title.html(result.title);
+          $content.html(result.content);
+          //发送下一次的请求，请求评论数据
+          let url = `http://localhost:3000${result.commentsUrl}`;
+          result = await getNews(url);
+          //显示评论数据
+          let html = '';
+          result.forEach(item => html += `<li>${item.content}</li>`);
+          $list.html(html);
+        }
+
+        //调用async函数
+        showData();
+
+      })
+  </script>
+</body>
+</html>

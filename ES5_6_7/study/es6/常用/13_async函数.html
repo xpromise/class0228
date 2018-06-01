@@ -24,6 +24,67 @@
 -->
 <script type="text/javascript" src="./js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript">
+  /*function promise() {
+    return new Promise((resolve, reject) => {
+      setTimeout(function () {
+        console.log('延时器执行了·~~');
+        resolve('data');
+        // reject('error');  //报错，传入的参数就是我最终显示的错误信息
+      }, 2000)
+    })
+  }
+
+  async function testAsync() {
+    console.log('函数开始执行了~~');
+    //await关键字后面接着其他代码（除promise对象外），会立即执行，不会暂停
+    // await (function () {
+    //
+    // })
+    // console.log('hello');
+    //await关键字也会暂停函数的执行，
+    //await关键字通常是和promise对象结合使用，async继续执行的条件是要看promise的状态
+    //当promise的状态为fullfilled（resolve()）的时候，才能继续向下执行
+    let result = await promise();
+    console.log(result);
+    console.log('函数执行中~~');
+    await promise();
+    console.log('函数执行完毕了~~~');
+    //通过return来指定async函数的返回值
+    return 'xxxxxxxxxxxx';
+  }
+  //async会立即执行里面的代码
+  //执行async函数返回一个promise对象
+  testAsync()
+    .then(res => {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })*/
+
+  function promise() {
+    return new Promise((resolve, reject) => {
+      setTimeout(function () {
+        console.log('延时器执行了·~~');
+        resolve('data');
+        // reject('error');  //报错，传入的参数就是我最终显示的错误信息
+      }, 2000)
+    })
+  }
+  //暂时还没有意义
+  async function test() {
+    let result = await Promise.resolve('data');
+    console.log(result);
+    result = await Promise.reject('error');
+    console.log(result);
+  }
+  test();
+
+  /*let fn = () => {}
+  //匿名的async函数
+  (async () => {
+
+  })()*/
 
 </script>
 
