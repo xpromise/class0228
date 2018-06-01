@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <h1 id="title"></h1>
+  <p id="content"></p>
+  <ul id="list"></ul>
+  <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+  <script type="text/javascript">
+      $(function () {
+        let $title = $('#title');
+        let $content = $('#content');
+        let $list = $('#list');
+
+        //创建发送请求的函数
+        function getNews(url) {
+          $.get(url, function (data) {
+            // console.log(data);
+            sd.next(data);
+          })
+        }
+        //获取数据并显示的函数
+        function* showData() {
+          let result = yield getNews('http://localhost:3000/news?id=123');
+          console.log(result);
+          //显示数据
+          $title.html(result.title);
+          $content.html(result.content);
+          //发送下一次的请求，请求评论数据
+          let url = `http://localhost:3000${result.commentsUrl}`;
+          result = yield getNews(url);
+          console.log(result);
+          //显示评论数据
+          let html = '';
+          result.forEach(item => {
+            html += `<li>${item.content}</li>`;
+          })
+          $list.html(html);
+        }
+
+        let sd = showData();
+        sd.next();
+
+      })
+  </script>
+</body>
+</html>

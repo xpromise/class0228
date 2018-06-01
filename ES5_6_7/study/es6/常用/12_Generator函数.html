@@ -26,9 +26,30 @@
       5、再次调用next方法会从上一次停止时的yield处开始，直到最后
       6、yield语句返回结果通常为undefined， 当调用next方法时传参内容会作为启动时yield语句的返回值。
   -->
-<script type="text/javascript" src="./js/jquery-1.10.1.min.js"></script>
 <script type="text/javascript">
+  //创建一个generator函数 需要在function后面加上一个*
+  function* generator() {
+    //第一次next()调用 执行32-36行代码 并将37行yield关键字后面的参数作用返回值返回给此次next()返回值
+    console.log('函数开始执行了~~~');
+    //关键字yield 只能generator函数中使用
+    //暂停函数的运行
+    //通过调用next()方法能够继续执行函数，并遇到yield暂停，返回值就是yield指定的值
+    let result = yield 'hello'
+    //第二次next('str')调用，执行38-41行代码，37行let result = 此次next()传入的参数（'str'）,
+    //42行yield关键字后面的参数作用返回值返回给此次next()返回值
+    console.log(result);
+    console.log('函数正在执行中~~~');
+    yield 'atguigu'
+    //第三次next()调用，执行43-44行代码，发现后面没有yield关键字，函数就执行完毕了~~
+    console.log('函数执行完毕了~~~');
+  }
 
+  let g = generator();
+  console.log(g);
+  let result = g.next();
+  console.log(result);  // {value: "hello", done: false}
+  g.next('hello atguigu');
+  g.next();
 
 </script>
 </body>
