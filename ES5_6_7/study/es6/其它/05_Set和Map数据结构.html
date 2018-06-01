@@ -26,6 +26,53 @@
 -->
 
 <script type="text/javascript">
+  /*let s1 = new Set();
+  console.log(s1);
+  [1, 5, 8, 9, 5 , 4, 8, 3, 4].forEach(item => {
+    //重复的值不能存在
+    //添加值
+    s1.add(item);
+  })
+  console.log(s1);
+  let s2 = new Set([1, 5, 8, 9, 5 , 4, 8, 3, 4]);
+  console.log(s2);
+  //删除set容器的元素
+  s2.delete(8);
+  console.log(s2);
+  //判断有无指定元素
+  console.log(s2.has(8));
+  console.log(s2.size);
+  s2.clear();
+  console.log(s2);*/
+  //利用set容器实现数组的去重
+  /*let arr = [1, 5, 8, 9, 5 , 4, 8, 3, 4];
+  let s = new Set(arr);
+  arr = [];
+  // arr.length = 0;
+  console.log(arr);
+  for (let value of s) {
+    arr.push(value);
+  }
+  console.log(arr);*/
+
+  let m = new Map();
+  console.log(m);
+
+  let person = {
+    name: '吴杰',
+    age: 24,
+    age: 26
+  }
+  //无序的key值不相同的key-value集合体
+  for (let key in person) {
+    m.set(key, person[key]);
+  }
+  console.log(m);
+  // console.log(m.name);  不能通过对象.属性的方式取值
+  // console.log(m['name']);
+
+  console.log(m.get('name'));  //通过get方法取值
+  console.log(m.size);
 
 </script>
 </body>
