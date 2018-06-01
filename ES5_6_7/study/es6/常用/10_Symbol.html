@@ -32,6 +32,30 @@
 
 
 <script type="text/javascript">
+  // 1、Symbol属性对应的值是唯一的，解决命名冲突问题
+  //对象中的symbol属性必须通过[]取/赋值
+  let symbolName = Symbol('name');
+  let symbolAge = Symbol('age');
+  // console.log(s1);
+  // console.log(typeof s1);  //symbol
+  let person = {sex: '男'};
+  person[symbolName] = 'Bob';
+  person[symbolAge] = 18;
+  console.log(person);
+  // console.log(person[s1]);
+  // console.log(person[s2]);
+  // person[s1] = 'Jack';
+  // console.log(person);
+
+  // 2、Symbol值不能与其他数据进行计算，包括同字符串拼串
+  let s1 = Symbol();
+  // console.log(s1 + 123);  //Cannot convert a Symbol value to a number
+  // console.log(s1 + '123');  //Cannot convert a Symbol value to a string
+
+  // 3、for in, for of遍历时不会遍历symbol属性。
+  for (let key in person) {
+    console.log(key);
+  }
 
 </script>
 

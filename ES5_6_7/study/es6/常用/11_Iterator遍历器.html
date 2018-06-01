@@ -28,7 +28,59 @@
   -->
 
   <script type="text/javascript">
+    /*function Iterator(arr) {
+      //初始化下标的位置
+      let nextIndex = 0;
+      return {
+        next () {
+          return (nextIndex < arr.length
+            ? {value: arr[nextIndex++], done: false}
+            : {value: undefined, done: true})
+        }
+      }
+    }
+    let arr = [1, 5, 8, 3];
+    let {next} = Iterator(arr);
+    // iteratorObj.next()
+    console.log(next());
+    console.log(next());
+    console.log(next());
+    console.log(next());
+    console.log(next());
+    console.log(next());
+    console.log(next());
+*/
 
+    /*let arr = [1, 5, 8 , 7];
+    console.log(arr);
+    //获取的是值
+    //只要部署了Symbol.iterator接口,就能使用for of遍历
+    for (let value of arr) {
+      console.log(value);
+    }
+    console.log(...arr);*/
+
+    /*let str = 'hello atguigu';
+    console.log(str);
+    for (let value of str) {
+      console.log(value);
+    }
+
+    function fn() {
+      console.log(arguments);
+      for (let value of arguments) {
+        console.log(value);
+      }
+    }
+    fn(1, true, 'str');*/
+    //默认对象是没有iterator接口
+    /*let obj = {
+      name: 's',
+      age: 18
+    }
+    for (let value of obj) {
+      console.log(value);
+    }*/
   </script>
 </body>
 </html>
