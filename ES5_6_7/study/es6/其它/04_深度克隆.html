@@ -5,8 +5,6 @@
   <title>对象的深度克隆</title>
 </head>
 <body>
-
-
 <!--
   1、数据类型：
     * 数据分为基本的数据类型(String, Number, boolean, Null, Undefined)和对象数据类型
@@ -32,6 +30,88 @@
         5). 深拷贝包含函数数据的对象/数组
 -->
 <script type="text/javascript">
+  // let person1 = {name: '吴杰', age: 23, sex: {option1: '男', option2: '女'}};
+  // let person2 = person1;  //浅度克隆，修改克隆出来的对象，原对象也会产生影响
+  // person2.age = 24;
+  // person2.sex.option3 = '不男不女';
+  // console.log(person1);
+  // let person2 = {};
+  // Object.assign(person2, person1);  //浅度克隆, 能够复制一般数据类型，不会影响原对象，但是一旦复制引用数据类型，会影响原对象
+  // person2.age = 24;
+  // person2.sex.option3 = '不男不女';
+  // console.log(person1);
+
+  //concat()
+  /*let arr1 = [1, 2, {name: '吴杰'}];
+  let arr2 = [];
+  // console.log(arr2.concat(arr1));
+  // console.log(arr2);
+  arr2 = arr2.concat(arr1);  //浅度克隆
+  arr2[2].name = '吴俊杰';
+  console.log(arr1);*/
+
+  //slice()
+  /*let arr1 = [1, 2, {name: '吴杰'}];
+  let arr2 = arr1.slice();  //浅度克隆
+  arr2[2].name = '吴俊杰';
+  console.log(arr1);*/
+
+  //深度克隆
+  /*let person1 = {name: '吴杰', age: 23, sex: {option1: '男', option2: '女'}};
+  let arr1 = [1, 2, {name: '吴杰'}];
+  //能够实现对象和数组的深度克隆
+  let json = JSON.stringify(arr1);
+  let arr2 = JSON.parse(json);
+  console.log(arr1, arr2);
+  arr2[2].name = '吴俊杰';
+  console.log(arr1, arr2);*/
+
+  // let json = JSON.stringify(person1);
+  // let person2 = JSON.parse(json);
+  // console.log(person1, person2);
+  // person2.age = 24;
+  // person2.sex.option3 = '不男不女';
+  // console.log(person1, person2);
+
+  /*function Test() {
+
+  }
+  Test.prototype.name = 'Test';
+  let t = new Test();
+
+  function fn() {
+
+  }
+
+  let person = {
+    a: Test,
+    b: t,
+    c: /^123$/,
+    d: fn
+  }
+  /!*
+    方法存在局限性：
+      函数不能被转化为json字符串
+      正则表达式会被转化为空的对象
+      自己new构造函数创建的实例对象原型上的方法不能复制成功
+   *!/
+  let json = JSON.stringify(person);
+  console.log(json);
+  let person1 = JSON.parse(json);
+  console.log(person1);*/
+
+  //如何区分所有数据类型？？？
+  console.log(Object.prototype.toString.call({}).slice(8, -1));
+  console.log(Object.prototype.toString.call([]).slice(8, -1));
+  console.log(Object.prototype.toString.call(function () {
+
+  }).slice(8, -1));
+  console.log(Object.prototype.toString.call(123).slice(8, -1));
+  console.log(Object.prototype.toString.call(true).slice(8, -1));
+  console.log(Object.prototype.toString.call(null).slice(8, -1));
+  console.log(Object.prototype.toString.call(undefined).slice(8, -1));
+
+
 
 </script> 
 </body>

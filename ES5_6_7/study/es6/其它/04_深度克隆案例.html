@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>深度克隆</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+    //创建一个函数区分数据类型
+    function checkType(target) {
+      /*let type = Object.prototype.toString.call(target).slice(8, -1);
+      if (type === 'Null') return null;
+      else if (type === 'Undefined') return undefined;
+      else return type;*/
+      return Object.prototype.toString.call(target).slice(8, -1);
+    }
+
+    //深度克隆
+    function deepClone(target) {
+      //初始一个值
+      let result = null;
+      let type = checkType(target);
+      //检查克隆的目标是否是对象/数组
+      if (type === 'Object') result = {};
+      else if (type === 'Array') result = [];
+      else return target;
+      //实现克隆
+      for (let key in target) {
+        //取得指定属性名的属性值
+        let value = target[key];
+        if (checkType(value) === 'Object' || 'Array') {
+          //说明属性值是对象/数组的类型
+          result[key] = deepClone(value);
+        } else {
+          //普通的值直接赋值，将取得的值重新赋值给result
+          result[key] = value;
+        }
+        // result[key] = ((checkType(value) === 'Object' || 'Array') ? deepClone(value) : value);
+      }
+      //result代表着我复制好的所有内容
+      return result;
+    }
+
+    let person1 = {name: '吴杰', age: 23, sex: {option1: '男', option2: '女'}};
+    let person2 = deepClone(person1);
+    person2.age = 24;
+    person2.sex.option3 = '不男不女';
+    console.log(person1, person2);
+
+    /*function Test() {
+
+    }
+    Test.prototype.name = 'Test';
+    let t = new Test();
+
+    function fn() {
+
+    }
+
+    let person = {
+      a: Test,
+      b: t,
+      c: /^123$/,
+      d: fn
+    }
+    console.log(deepClone(person));*/
+
+  </script>
+</body>
+</html>
