@@ -19,6 +19,30 @@
 4. findIndex(function(value, index, arr){return true}) : 找出第一个满足条件返回true的元素下标
 -->
 <script type="text/javascript">
+  function test() {
+    console.log(arguments);
+    let args = Array.from(arguments);
+    console.log(args);
+  }
+  // test(1, true, 'str');
+
+  let arr1 = Array.of(1);
+  console.log(arr1);
+  /*
+    当传入参数只有一个时，并且为number类型，此时设置的就是数组的长度
+   */
+  let arr2 = new Array(10);
+  console.log(arr2);
+
+  let arr3 = [1, 5, 8, 2, 3, 4, 8, 6];
+  let result = arr3.find((item, index, arr) => {
+    return item > 5
+  })
+  console.log(result);
+  result = arr3.findIndex((item, index, arr) => {
+    return item > 5
+  })
+  console.log(result);
 
 </script>
 </body>

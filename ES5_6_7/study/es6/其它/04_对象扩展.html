@@ -16,6 +16,18 @@
 -->
 
 <script type="text/javascript">
+  console.log(0 === -0);   //true
+  console.log(NaN === NaN);  //false
+
+  console.log(Object.is(0, -0));  //false
+  console.log(Object.is(NaN, NaN));  //true
+
+  let obj1 = {};
+  let obj2 = {name: '吴杰', age: 22};
+  obj2.__proto__.name = '吴俊杰';
+  let obj3 = {sex: '男'};
+  Object.assign(obj1, obj2, obj3);
+  console.log(obj1);
 
 </script>
 </body>

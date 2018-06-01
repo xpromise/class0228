@@ -15,6 +15,52 @@
 6. 重写从父类中继承的一般方法
 -->
 <script type="text/javascript">
+  /*function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  Person.prototype.setName = function () {
+    this.name = name;
+  }
+  let p = new Person('Bob', 18);
+  console.log(p);*/
+
+  //定义类
+  class Person {
+    constructor (name, age) {
+      //定义类的属性
+      this.name = name;
+      this.age = age;
+    }
+    //定义类的方法, 必须使用对象的简写方式定义
+    setName (name) {
+      this.name = name;
+    }
+    setAge (age) {
+      this.age = age;
+    }
+  }
+  console.log(Person);
+  let p = new Person('Bob', 18);
+  console.log(p);
+
+  //子类继承父类,子类通过extends继承父类
+  class Son extends Person {
+    //子类要想继承父类的属性/方法，需要在constructor中调用super()
+    //super()需要在使用this的上面
+    constructor (name, age, sex) {
+      super(name, age);
+      this.sex = sex;
+    }
+    setName () {
+      console.log(this.name);
+    }
+    setSex (sex) {
+      this.sex = sex;
+    }
+  }
+  let s = new Son('Jack', 19, '男');
+  console.log(s);
 
 </script>
 </html>
