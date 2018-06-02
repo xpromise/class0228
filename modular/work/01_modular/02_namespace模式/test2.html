@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02_namespace模式</title>
+</head>
+<body>
+<script type='text/javascript' src='module1.js'></script>
+<script type='text/javascript'>
+  fnObj.foo1();
+  fnObj.foo2();
+  fnObj.foo1 = function () {
+    console.log('~~~~~~');
+  }
+  fnObj.foo1();
+</script>
+</body>
+</html>
