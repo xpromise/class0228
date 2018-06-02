@@ -12,8 +12,13 @@
   
   //主文件引入依赖模块，来启动项目
   //引入多个依赖的时候，他们是一一对应的关系
-  requirejs(['alerter', 'jquery'], function (alerter, $) {
-    alerter();
-    $('body').html('<h1>hello AMD</h1>');
+  requirejs(['jquery'], function ($) {
+    $('#btn').click(function () {
+      // 除了define函数能引入依赖，它也能通过require引入依赖
+      require(['alerter'], function (alerter) {
+        alerter();
+      })
+    })
+    // $('body').html('<h1>hello AMD</h1>');
   });
 })()

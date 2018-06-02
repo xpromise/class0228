@@ -4,7 +4,7 @@
  */
 
 define(['dataServer', 'jquery'], function (dataServer, $) {
-  
+  console.log('alerter模块执行了~~~~');
   const msg = dataServer();
   
   function alertData() {

@@ -4,6 +4,7 @@
  */
 
 define(function () {
+  console.log('dataServer模块执行了~~~~');
   const msg = 'atguigu';
   
   function getMsg() {
