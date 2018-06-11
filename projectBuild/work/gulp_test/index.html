@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/dist.min.css">
 </head>
 <body>
-  <h1>hello</h1>
+  <h1>hello world123</h1>
   <div id="box1">
     <p>hello gulp</p>
   </div>
@@ -15,5 +15,27 @@
   </div>
   <!--这是注释·~~~-->
   <script type="text/javascript" src="js/dist.min.js"></script>
+  <script type="text/javascript">
+    (function (global, factory) {
+      //判断用的什么模块化技术
+      typeof exports === 'object' && typeof module !== 'undefined'  //如果为true 是commonjs
+        ? module.exports = factory()
+        //如果不是true
+          //检查是否是requirejs（AMD）
+        : typeof define === 'function' && define.amd
+          ? define(factory)
+             //说明没有模块化，window.Vue
+          : (global.Vue = factory());
+    }(this, (function () {
+
+    })));
+    
+    /*(function (global, factory) {
+      
+    })(this, function () {
+      //主要的代码逻辑
+    })*/
+  </script>
 </body>
 </html>
+

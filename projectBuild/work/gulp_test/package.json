@@ -12,13 +12,18 @@
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.4",
     "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.5.0",
+    "gulp-cssmin": "^0.2.0",
     "gulp-htmlmin": "^4.0.0",
     "gulp-jshint": "^2.1.0",
     "gulp-less": "^3.5.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.5.0",
     "gulp-rename": "^1.2.3",
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.5",
-    "less-plugin-autoprefix": "^1.5.1"
+    "less-plugin-autoprefix": "^1.5.1",
+    "open": "0.0.5"
   },
   "jshintConfig": {
     "curly": true,
