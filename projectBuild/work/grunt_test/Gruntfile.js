@@ -58,7 +58,7 @@ module.exports = function (grunt) {
     },
     cssmin: {
       options: {
-        mergeIntoShorthands: false,  //去掉空格
+        mergeIntoShorthands: false,  //不用快速压缩（快速压缩可能会导致某种问题）
         roundingPrecision: -1    //不用四舍五入
       },
       target: {
@@ -66,7 +66,41 @@ module.exports = function (grunt) {
           'dist/css/dist.min.css': ['build/css/*.css']
         }
       }
-    }
+    },
+    htmlmin: {                                     // Task
+      dist: {                                      // Target
+        options: {                                 // Target options
+          removeComments: true,       //删除注释
+          collapseWhitespace: true    //删除空格
+        },
+        files: {                                   // Dictionary of files
+          'dist/index.min.html': 'index.html',     // 'destination': 'source'
+        }
+      }
+    },
+    watch: {
+      scripts: {       //监视js的任务
+        files: ['src/js/*.js', 'Gruntfile.js'],   //监视的文件
+        tasks: ['jshint', 'concat', 'uglify'],    //一旦监视的文件发生变化，就会执行tasks列表的任务
+        options: {
+          spawn: false
+        },
+      },
+      css: {
+        files: 'src/less/*.less',
+        tasks: ['less', 'cssmin'],
+        options: {
+          spawn: false
+        },
+      },
+      html: {
+        files: 'index.html',
+        tasks: ['htmlmin'],
+        options: {
+          spawn: false
+        },
+      }
+    },
   });
   // 2. 加载插件任务
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -74,8 +108,12 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   // 3. 注册构建任务  同步执行任务
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'less', 'cssmin']); //放置所有要执行的任务，执行顺序从左到右
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'less', 'cssmin', 'htmlmin']); //放置所有要执行的任务，执行顺序从左到右
+  
+  grunt.registerTask('myWatch', ['default', 'watch']);
 };
 
 
