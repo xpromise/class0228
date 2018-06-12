@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 //当我执行webpack时，它会去根路径下找webpack.config.js，读取其中的配置，执行其中的任务
 module.exports = {
   //入口
-  entry: './src/app.js',
+  entry: './src/app.js',  //路径要特殊对待
   //输出
   output: {
     path: resolve(__dirname, '../build'),   //输出文件目录
@@ -50,7 +50,7 @@ module.exports = {
       use: {
         loader: 'html-loader',
         options: {
-          attrs: ['img:src', 'link:href'],
+          attrs: ['img:src'],
         }
       }
     }]
@@ -60,10 +60,10 @@ module.exports = {
     new ExtractTextPlugin('./style.css'),   //提取css为单独的文件
     new HtmlWebpackPlugin({     //生成一个新html 引入css 和 js
       filename: 'index.html',
-      template: './src/index.html'
+      template: './src/index.html'   //路径要特殊对待
     }),
     new CleanWebpackPlugin('build', {   //清空目录名称（可以为数组）  配置选项
-      root: resolve(__dirname)  //根目录
+      root: resolve(__dirname, '../')  //根目录
     }),
   ]
 }

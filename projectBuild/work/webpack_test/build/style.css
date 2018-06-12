@@ -5,7 +5,8 @@
   background-size: 100% 100%;
 }
 #box1 p {
-  color: white;
+  color: rebeccapurple;
+  display: flex;
 }
 #box2 {
   width: 200px;

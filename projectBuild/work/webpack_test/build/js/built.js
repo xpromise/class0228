@@ -85,6 +85,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 console.log(Object(__WEBPACK_IMPORTED_MODULE_0__js_test1__["a" /* add */])(3, 3));
 console.log(Object(__WEBPACK_IMPORTED_MODULE_1__js_test2__["a" /* mul */])(3, 3));
+console.log(Object(__WEBPACK_IMPORTED_MODULE_1__js_test2__["a" /* mul */])(4, 4));
 console.log(__WEBPACK_IMPORTED_MODULE_2__json_data___default.a.name, __WEBPACK_IMPORTED_MODULE_2__json_data___default.a.age);
 
 /***/ }),
@@ -92,10 +93,11 @@ console.log(__WEBPACK_IMPORTED_MODULE_2__json_data___default.a.name, __WEBPACK_I
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = add;
-function add(x, y) {
+const add = (x, y) => {
   return x + y;
 }
+/* harmony export (immutable) */ __webpack_exports__["a"] = add;
+
 
 /***/ }),
 /* 2 */
