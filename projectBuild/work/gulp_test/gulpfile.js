@@ -50,7 +50,6 @@ gulp.task('less', function () {
     .pipe(gulp.dest('build/css'))
     // .pipe(livereload())
     .pipe($.connect.reload())
-  
 })
 
 gulp.task('css', ['less'], function () {
