@@ -1,7 +1,6 @@
 const {resolve} = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 //当我执行webpack时，它会去根路径下找webpack.config.js，读取其中的配置，执行其中的任务
 module.exports = {
@@ -9,8 +8,8 @@ module.exports = {
   entry: './src/app.js',
   //输出
   output: {
-    path: resolve(__dirname, '../build'),   //输出文件目录
-    filename: 'js/built.js'     //输出的文件名
+    path: resolve(__dirname, 'build'),   //输出文件目录
+    filename: './built.js'     //输出的文件名
   },
   //loaders: 加载所有类型文件转化webpack能识别的模块
   module: {
@@ -40,7 +39,7 @@ module.exports = {
           loader: 'url-loader',
           options: {
             limit: 8192,   //  8 * 1024 8kb大小以下的图片会自动转化base64格式
-            outputPath: './images',    //指定文件的输出目录
+            // outputPath: './images',    //指定文件的输出目录
             // publicPath: '' //指定引入资源的路径
           }
         }
@@ -61,9 +60,18 @@ module.exports = {
     new HtmlWebpackPlugin({     //生成一个新html 引入css 和 js
       filename: 'index.html',
       template: './src/index.html'
-    }),
-    new CleanWebpackPlugin('build', {   //清空目录名称（可以为数组）  配置选项
-      root: resolve(__dirname)  //根目录
-    }),
-  ]
+    })
+  ],
+  //热加载/热更新
+  /*
+    webpack-dev-server@2
+    webpack-cli
+    配置命令  将webpack取代为webpack-dev-server
+   */
+  devServer: {
+    contentBase: resolve(__dirname),  //加载资源路径
+    compress: true,   //gzip压缩
+    port: 9000,       //端口号
+    open: true,        //自动打开浏览器
+  }
 }

@@ -9,23 +9,16 @@ module.exports = {
   entry: './src/app.js',
   //输出
   output: {
-    path: resolve(__dirname, '../build'),   //输出文件目录
+    path: resolve(__dirname, '../dist'),   //输出文件目录
     filename: 'js/built.js'     //输出的文件名
   },
   //loaders: 加载所有类型文件转化webpack能识别的模块
   module: {
     rules: [{      //loader的规则
       test: /\.less$/,   //检查是否是指定规则的文件，如果有满足条件的文件，就会执行use中的任务
-      /*use: [{            //use中的任务是从右往左执行的，同步
-        loader: "style-loader" // 将css作为style标签应用在网页上
-      }, {
-        loader: "css-loader" // 将css转化为commonjs的模块
-      }, {
-        loader: "less-loader" //编译less为css
-      }]*/
       use: ExtractTextPlugin.extract({
         fallback: 'style-loader',
-        use: ['css-loader', 'less-loader']
+        use: ['css-loader', 'postcss-loader', 'less-loader']
       })
     }, {
       test: /\.(png|jpg|gif)$/,
