@@ -1,0 +1,10 @@
+#box2 {
+  width: 200px;
+  height: 200px;
+  background: deeppink;
+}
+#box2 p {
+  color: deepskyblue;
+  display: -ms-flexbox;
+  display: flex;
+}
